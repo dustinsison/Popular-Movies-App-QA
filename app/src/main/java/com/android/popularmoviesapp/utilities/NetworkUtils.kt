@@ -3,7 +3,6 @@ package com.android.popularmoviesapp.utilities
 
 import android.net.Uri
 import android.util.Log
-import com.android.popularmoviesapp.BuildConfig
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
@@ -15,7 +14,7 @@ object NetworkUtils {
     private val TAG = NetworkUtils::class.java.simpleName
 
     //insert your own API KEY
-    private const val API_KEY = BuildConfig.ApiKey
+    private const val API_KEY = "e0ebff9dd263e3fa79b6d39d1f0c2219"
 
     private const val STATIC_MOVIE_DATABASE_URL = "https://api.themoviedb.org/3/movie/"
 
@@ -32,9 +31,9 @@ object NetworkUtils {
 
     fun buildUrl(sortOrder: String): URL? {
         val builtUri = Uri.parse(MOVIEDB_BASE_URL).buildUpon()
-                .appendPath(sortOrder)
-                .appendQueryParameter(APPID_PARAM, API_KEY)
-                .build()
+            .appendPath(sortOrder)
+            .appendQueryParameter(APPID_PARAM, API_KEY)
+            .build()
 
         var url: URL? = null
         try {
@@ -50,9 +49,9 @@ object NetworkUtils {
 
     fun trailersBuildUrl(movie_ID: String): URL? {
         val builtUri = Uri.parse(MOVIEDB_BASE_URL + movie_ID).buildUpon()
-                .appendPath(VIDEO_PATH)
-                .appendQueryParameter(APPID_PARAM, API_KEY)
-                .build()
+            .appendPath(VIDEO_PATH)
+            .appendQueryParameter(APPID_PARAM, API_KEY)
+            .build()
 
         var url: URL? = null
         try {
@@ -67,9 +66,9 @@ object NetworkUtils {
 
     fun reviewsBuildUrl(movie_ID: String): URL? {
         val builtUri = Uri.parse(MOVIEDB_BASE_URL + movie_ID).buildUpon()
-                .appendPath(REVIEW_PATH)
-                .appendQueryParameter(APPID_PARAM, API_KEY)
-                .build()
+            .appendPath(REVIEW_PATH)
+            .appendQueryParameter(APPID_PARAM, API_KEY)
+            .build()
 
         var url: URL? = null
         try {

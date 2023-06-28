@@ -12,9 +12,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
-        debug{
-            buildConfigField 'String', "ApiKey", PopularMoviesApp_ApiKey
+        debug {
+            buildConfigField 'String', "ApiKey", "\"API_KEY\""
         }
         release {
             minifyEnabled false
@@ -44,6 +45,9 @@ dependencies {
 }
 
 buildscript {
+    dependencies {
+        classpath files("apikey.jt")
+    }
     repositories {
         jcenter()
     }
