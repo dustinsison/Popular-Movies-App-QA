@@ -26,6 +26,6 @@ locally, and open the /app/build.gradle file.
 Under BuildTypes > Debug > BuildConfigField, replace API_KEY with the generated API key from The
 Movie Database. It should look something like this afterwards:
 
-> buildConfigField 'String', "ApiKey", "\"f1faee8ee152f2eb88a5e28e2e1d1128\""
+`buildConfigField 'String', "ApiKey", "\"f1faee8ee152f2eb88a5e28e2e1d1128\""`
 
 The app should now be able to compile.
