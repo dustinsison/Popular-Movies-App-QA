@@ -1,23 +1,43 @@
 package com.android.popularmoviesapp.robots
 
+import android.content.Context
+import android.support.test.InstrumentationRegistry.getInstrumentation
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
+import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.v7.widget.RecyclerView
 import com.android.popularmoviesapp.R
 import org.hamcrest.CoreMatchers.anyOf
 
 class HomePageRobot {
-    // Verifies home page title
+    private val context: Context = getInstrumentation().targetContext
+    private val pageTitle: String = context.getString(R.string.app_name)
+    private val settings: String = context.getString(R.string.action_settings)
+    // Checks home page title
     fun checkPageTitle() {
-        onView(withText("Popular Movies"))
+        onView(withText(pageTitle))
             .check(matches(isDisplayed()))
     }
-    // Verifies that at least two movies are displayed
+    // Checks that at least two movies are displayed
     fun checkMoviePosters() {
         onView(anyOf(withId(R.id.movies_rv)))
             .check(matches(hasMinimumChildCount(2)))
+    }
+    // Selects movie at given index
+    fun selectMovie(index: Int) {
+        onView(withId(R.id.movies_rv))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(index))
+            .perform(click())
+    }
+    // Opens the settings menu
+    fun selectSettings() {
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        onView(withText(settings)).perform(click())
     }
 }
