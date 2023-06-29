@@ -45,7 +45,7 @@ I highly recommend using [Android Studio](), and using Gradle JDK 1.8 to compile
 Popular Movies is a fully-featured application that requests movie information from The Movie
 Database API over a web service.
 
-![App Preview 1](/README_Resources/README_Movies_Landing.png){width=200} ![App Preview 2](/README_Resources/README_Movies_Movie_Detail.png){width=200} ![App Preview 3](/README_Resources/README_Movies_Settings.png){width=200}
+<img src="https://dev.azure.com/dsison/_git/PopularMoviesQA?path=/README_Resources/README_Movies_Landing.png" width="200"/><img src="https://dev.azure.com/dsison/_git/PopularMoviesQA?path=/README_Resources/README_Movies_Movie_Detail.png" width="200"/><img src="https://dev.azure.com/dsison/_git/PopularMoviesQA?path=/README_Resources/README_Movies_Settings.png" width="200"/>
 
 The app is able to pull the most recent data on all movies released to-date and sort them according
 to popularity, rating, or by user favorite titles.
