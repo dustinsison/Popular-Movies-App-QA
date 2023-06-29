@@ -11,13 +11,15 @@ class SettingsPageTests : BaseTest() {
     private val homePageRobot = HomePageRobot()
     private val settingsRobot = SettingsRobot()
     @Test
+    // Checks the default settings
     fun verifySettingsPage() {
         homePageRobot.selectSettings()
         settingsRobot.checkDefaultSettings()
     }
     @Test
+    // Changes the sort by settings
     fun changeSortSettings() {
         homePageRobot.selectSettings()
-        settingsRobot.changeSortBySettings()
+        settingsRobot.changeSortByRated()
     }
 }

@@ -9,20 +9,23 @@ import org.junit.runner.RunWith
 class HomePageTests : BaseTest() {
     private val homePageRobot = HomePageRobot()
     @Test
+    // Checks app title
     fun checkTitle() {
         homePageRobot.checkPageTitle()
     }
     @Test
+    // Checks app is displaying movies
     fun checkMoviePosters() {
         homePageRobot.checkMoviePosters()
     }
     @Test
+    // Checks that the user can scroll down the list of movies and select one
     fun scrollToAndOpenMovieDetails() {
         homePageRobot.selectMovie(8)
     }
     @Test
+    // Opens the settings page
     fun openSettings() {
         homePageRobot.selectSettings()
-        Thread.sleep(10000)
     }
 }

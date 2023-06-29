@@ -15,15 +15,18 @@ class SettingsRobot {
     private val sortByPopular: String = context.getString(R.string.sort_most_popular_label)
     private val sortByRated: String = context.getString(R.string.sort_highest_rated_label)
     private val sortByFavorites: String = context.getString(R.string.sort_favorite_movie_label)
-    // Checks displayed settings
     fun checkDefaultSettings() {
         onView(withText(sortBy)).check(matches(isDisplayed()))
         onView(withText(sortByPopular)).check(matches(isDisplayed()))
     }
-    // Changes sort by settings
-    fun changeSortBySettings() {
+    fun changeSortByRated() {
         onView(withText(sortBy)).perform(click())
         onView(withText(sortByRated)).perform(click())
         onView(withText(sortByRated)).check(matches(isDisplayed()))
+    }
+    fun changeSortByFavorites() {
+        onView(withText(sortBy)).perform(click())
+        onView(withText(sortByFavorites)).perform(click())
+        onView(withText(sortByFavorites)).check(matches(isDisplayed()))
     }
 }
