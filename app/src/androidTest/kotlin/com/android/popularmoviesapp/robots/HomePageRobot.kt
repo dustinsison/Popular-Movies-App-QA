@@ -2,6 +2,8 @@ package com.android.popularmoviesapp.robots
 
 import android.content.Context
 import android.support.test.InstrumentationRegistry.getInstrumentation
+import android.support.test.espresso.Espresso
+import android.support.test.espresso.Espresso.onIdle
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import android.support.test.espresso.UiController
@@ -31,6 +33,7 @@ class HomePageRobot {
     }
     // Checks that at least two movies are displayed
     fun checkMoviePosters() {
+        onIdle()
         onView(anyOf(withId(R.id.movies_rv)))
             .check(matches(hasMinimumChildCount(0)))
     }
@@ -39,13 +42,8 @@ class HomePageRobot {
         onView(withId(R.id.movies_rv))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(index, clickChildViewWithId(R.id.movies_iv)))
             .perform(click())
+        onIdle()
     }
-    // Opens the settings menu
-    fun selectSettings() {
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
-        onView(withText(settings)).perform(click())
-    }
-
     private fun clickChildViewWithId(viewId: Int): ViewAction {
         return object : ViewAction {
             override fun getConstraints() = isAssignableFrom(RecyclerView::class.java)
@@ -55,5 +53,11 @@ class HomePageRobot {
                 childView.performClick()
             }
         }
+    }
+    // Opens the settings menu
+    fun selectSettings() {
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        onView(withText(settings)).perform(click())
+        onIdle()
     }
 }
